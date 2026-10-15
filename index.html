@@ -1,100 +1,594 @@
 
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suci Ramdhani | Portfolio</title>
+<meta name="theme-color" content="#071638">
+<title>Suci Ramdhani | Personal Portfolio</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#111116;color:#f8f5ff;line-height:1.7}
-header{padding:20px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #352c40}
-.logo{font-weight:bold;color:#d0adff;font-size:20px}
-nav a{color:#eee;text-decoration:none;margin-left:12px;font-size:12px}
-.hero{padding:100px 8% 85px;background:radial-gradient(ellipse at 85% 20%,#49305c 0,transparent 48%)}
-.tag{color:#d0adff;letter-spacing:3px;font-size:12px}
-h1{font-size:clamp(40px,9vw,70px);line-height:1.12;margin:20px 0}
-.purple{color:#c9a5ff}
-p{color:#c8c1d0}
-.btn{display:inline-block;margin-top:25px;padding:11px 20px;background:#c9a5ff;color:#17121e;border-radius:7px;text-decoration:none;font-weight:bold}
-section:not(.hero){padding:65px 8%}
-h2{font-size:28px;margin-bottom:20px}
-.card{background:#1d1924;border:1px solid #3b3047;border-radius:14px;padding:22px;margin-top:15px}
-.skills{display:flex;flex-wrap:wrap;gap:10px}
-.skills span{padding:7px 12px;border:1px solid #8767a7;border-radius:20px;color:#dfcaff;font-size:13px}
-.item{border-left:2px solid #c9a5ff;padding-left:17px;margin:22px 0}
-footer{text-align:center;border-top:1px solid #352c40;padding:25px;color:#aaa;font-size:13px}
+:root {
+  --navy: #071638;
+  --blue: #102d72;
+  --purple: #a98bff;
+  --lavender: #d7c5ff;
+  --white: #fffaff;
+  --muted: #d1d8f0;
+  --card: rgba(28, 43, 101, .72);
+  --border: rgba(190, 160, 255, .7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 15px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: rgba(5, 16, 44, .96);
+  border-bottom: 1px solid rgba(190, 160, 255, .25);
+}
+
+.logo {
+  color: var(--lavender);
+  font-size: 21px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: flex-end;
+}
+
+nav a {
+  color: #eeeaff;
+  font-size: 12px;
+}
+
+nav a:hover {
+  color: var(--purple);
+}
+
+.hero {
+  min-height: 570px;
+  padding: 75px 8% 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  background:
+    radial-gradient(ellipse at 85% 20%, #5541a5 0, transparent 42%),
+    linear-gradient(140deg, #101f50, #071638 65%, #142c76);
+}
+
+.hero-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.tag {
+  color: var(--lavender);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(37px, 7vw, 66px);
+  line-height: 1.15;
+  margin: 20px 0;
+}
+
+.purple {
+  color: var(--purple);
+}
+
+.hero-copy > p:not(.tag) {
+  color: var(--muted);
+  max-width: 490px;
+}
+
+.id-photo {
+  width: 205px;
+  max-width: 36%;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 12px 25px rgba(0,0,0,.3));
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 11px 22px;
+  background: var(--lavender);
+  color: #15102c;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: .2s;
+}
+
+.btn:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+section {
+  padding: 65px 8%;
+}
+
+.section-title {
+  font-size: clamp(27px, 5vw, 38px);
+  line-height: 1.25;
+  margin: 9px 0 25px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  padding: 24px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.12);
+}
+
+.card p {
+  color: var(--muted);
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1.5fr .8fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.about-text p + p {
+  margin-top: 14px;
+}
+
+.profile-frame {
+  width: min(100%, 230px);
+  aspect-ratio: 1;
+  margin: auto;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, #d8c6ff, #7768ff, #b4a1ff);
+  box-shadow: 0 0 0 7px rgba(169,139,255,.12);
+}
+
+.profile-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 50%;
+  border: 4px solid var(--navy);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.contact-links a {
+  padding: 9px 13px;
+  background: rgba(169,139,255,.18);
+  border: 1px solid rgba(190,160,255,.4);
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.contact-links a:hover {
+  background: rgba(169,139,255,.35);
+}
+
+.education-grid,
+.experience-grid,
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card h3 {
+  color: var(--lavender);
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.period {
+  color: var(--lavender);
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills span {
+  padding: 8px 13px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: rgba(169,139,255,.1);
+  color: #eee5ff;
+  font-size: 13px;
+}
+
+.item {
+  border-left: 3px solid var(--purple);
+  padding-left: 17px;
+  margin: 5px 0 20px;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.item p {
+  margin-top: 7px;
+}
+
+.software-note {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.certificate-placeholder {
+  border: 1px dashed var(--border);
+  padding: 20px;
+  border-radius: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+footer {
+  padding: 28px 8%;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  background: #050f29;
+  border-top: 1px solid rgba(190,160,255,.25);
+}
+
+@media (max-width: 650px) {
+  header {
+    padding: 13px 5%;
+    align-items: flex-start;
+  }
+
+  nav {
+    gap: 7px 11px;
+    max-width: 70%;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 65px 7% 55px;
+    gap: 14px;
+  }
+
+  .id-photo {
+    width: 125px;
+    max-width: 35%;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 8vw, 46px);
+  }
+
+  section {
+    padding: 48px 7%;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-frame {
+    width: 185px;
+    grid-row: 1;
+  }
+
+  .education-grid,
+  .experience-grid,
+  .certificate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 19px;
+  }
+}
+
+@media (max-width: 380px) {
+  .logo {
+    font-size: 17px;
+  }
+
+  nav {
+    gap: 6px 8px;
+  }
+
+  .id-photo {
+    width: 100px;
+  }
+
+  .hero {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<div class="logo">SUCI.R</div>
-<nav>
-<a href="#about">About</a>
-<a href="#education">Education</a>
-<a href="#skills">Skills</a>
-</nav>
+  <a class="logo" href="#home">SUCI.R</a>
+  <nav aria-label="Navigasi utama">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#certificates">Certificates</a>
+  </nav>
 </header>
 
 <main>
-<div class="hero">
-<p class="tag">WELCOME TO MY PORTFOLIO</p>
-<h1>Hi, I'm<br><span class="purple">Suci Ramdhani.</span></h1>
-<p>Personal Portfolio · My Journey, Skills & Experience</p>
-<a class="btn" href="#about">Discover More ↗</a>
-</div>
 
+<!-- COVER -->
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <p class="tag">Welcome to My Portfolio</p>
+    <h1>PORT<br><span class="purple">FOLIO.</span></h1>
+    <h2>Suci Ramdhani</h2>
+    <p>Personal Portfolio · My Journey, Skills & Experience</p>
+    <a class="btn" href="#about">Discover More ↗</a>
+  </div>
+
+  <!-- Ganti nama file sesuai foto ID card di repository -->
+  <img class="id-photo"
+       src="suci-idcard.png"
+       alt="Foto Suci Ramdhani pada ID card">
+</section>
+
+<!-- ABOUT ME -->
 <section id="about">
-<p class="tag">GET TO KNOW ME</p>
-<h2>About Me.</h2>
-<div class="card">
-<p>Halo! Saya Suci Ramdhani. Selamat datang di website portofolio saya. Di sini kamu bisa mengenal profil, pendidikan, keterampilan, pengalaman, dan pencapaian saya.</p>
-</div>
+  <p class="tag">Get to Know Me</p>
+  <h2 class="section-title">About <span class="purple">Me.</span></h2>
+
+  <div class="card about-layout">
+    <div class="about-text">
+      <p>
+        Halo, saya Suci Ramdhani, lulusan SMK jurusan Manajemen
+        Perkantoran dan Layanan Bisnis. Saya memiliki pengalaman
+        praktik kerja di bidang administrasi serta pengalaman kerja
+        sebagai hostess restoran.
+      </p>
+      <p>
+        Saya terbiasa membantu pengelolaan data dan dokumen,
+        melakukan pengarsipan dengan rapi, serta memberikan pelayanan
+        kepada pelanggan. Saya adalah pribadi yang teliti,
+        bertanggung jawab, dan siap terus belajar serta mengembangkan
+        kemampuan.
+      </p>
+
+      <div class="contact-links">
+        <!-- Ganti # dengan tautan milikmu -->
+        <a href="#" target="_blank" rel="noopener">↗ CV</a>
+        <a href="#" target="_blank" rel="noopener">↗ LinkedIn</a>
+        <a href="mailto:">✉ Email</a>
+        <a href="#" target="_blank" rel="noopener">↗ WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Ganti nama file sesuai foto profil di repository -->
+    <div class="profile-frame">
+      <img class="profile-photo"
+           src="suci-profile.jpg"
+           alt="Foto profil Suci Ramdhani">
+    </div>
+  </div>
 </section>
 
+<!-- EDUCATION -->
 <section id="education">
-<p class="tag">MY BACKGROUND</p>
-<h2>Education.</h2>
-<div class="card">
-<h3>My Education Journey</h3>
-<p>Tambahkan nama sekolah, jurusan, dan tahun pendidikan kamu di sini.</p>
-</div>
+  <p class="tag">My Background</p>
+  <h2 class="section-title">Education.</h2>
+
+  <div class="education-grid">
+    <div class="card">
+      <h3>SMK Golden</h3>
+      <p>Manajemen Perkantoran dan Layanan Bisnis</p>
+      <p class="period">2021 — 2024</p>
+      <p>
+        Fokus pembelajaran: administrasi perkantoran,
+        pengelolaan data, tata kelola keuangan, dan sumber daya manusia.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Learning & Development</h3>
+      <p>
+        Terus mengembangkan kemampuan administrasi, komunikasi,
+        pengelolaan dokumen, dan penggunaan aplikasi perkantoran.
+      </p>
+    </div>
+  </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
-<p class="tag">WHAT I CAN DO</p>
-<h2>Skills & Software.</h2>
-<div class="card skills">
-<span>Communication</span>
-<span>Teamwork</span>
-<span>Creativity</span>
-<span>Microsoft Office</span>
-<span>Design</span>
-</div>
+  <p class="tag">What I Can Do</p>
+  <h2 class="section-title">Skills & Software.</h2>
+
+  <div class="card">
+    <h3>Hard Skills</h3>
+    <div class="skills">
+      <span>Administrasi</span>
+      <span>Pengelolaan Data</span>
+      <span>Pengarsipan</span>
+      <span>Pengelolaan Dokumen</span>
+      <span>Microsoft Office</span>
+      <span>Pelayanan Pelanggan</span>
+      <span>Penanganan Reservasi</span>
+    </div>
+
+    <h3 style="margin-top:24px">Soft Skills</h3>
+    <div class="skills">
+      <span>Komunikasi</span>
+      <span>Teliti</span>
+      <span>Bertanggung Jawab</span>
+      <span>Kerja Sama Tim</span>
+      <span>Adaptasi</span>
+      <span>Manajemen Waktu</span>
+    </div>
+
+    <h3 style="margin-top:24px">Software & Tools</h3>
+    <div class="skills">
+      <span>Microsoft Word</span>
+      <span>Microsoft Excel</span>
+      <span>PowerPoint</span>
+      <span>Canva</span>
+      <span>CapCut</span>
+      <span>Gmail</span>
+      <span>Google Drive</span>
+    </div>
+  </div>
 </section>
 
+<!-- INTERNSHIP AND WORK EXPERIENCE -->
 <section id="experience">
-<p class="tag">MY JOURNEY</p>
-<h2>Experience.</h2>
-<div class="card">
-<div class="item"><h3>Experience 01</h3><p>Tambahkan pengalaman kerja, organisasi, atau proyek.</p></div>
-</div>
+  <p class="tag">My Journey</p>
+  <h2 class="section-title">Experience.</h2>
+
+  <div class="experience-grid">
+    <div class="card">
+      <p class="tag">Internship</p>
+      <h3>Administrative Internship</h3>
+      <p class="period">Praktik Kerja Lapangan</p>
+      <div class="item">
+        <p>
+          Memasukkan dan memeriksa kesesuaian data pada website
+          perusahaan sesuai prosedur yang ditentukan.
+        </p>
+      </div>
+      <div class="item">
+        <p>
+          Menyusun serta mengelompokkan dokumen administrasi agar
+          tersimpan rapi dan mudah ditemukan kembali.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="tag">Work Experience</p>
+      <h3>Restaurant Hostess</h3>
+      <p class="period">Hospitality & Customer Service</p>
+      <div class="item">
+        <p>
+          Membantu menyambut dan melayani pelanggan dengan ramah
+          serta menjaga pengalaman pelayanan yang baik.
+        </p>
+      </div>
+      <div class="item">
+        <p>
+          Berkomunikasi dengan pelanggan dan membantu kebutuhan
+          pelayanan sesuai prosedur restoran.
+        </p>
+      </div>
+    </div>
+  </div>
+  <p class="software-note">
+    Catatan: sesuaikan nama perusahaan, lokasi, dan periode pengalaman
+    berdasarkan pengalamanmu yang sebenarnya.
+  </p>
 </section>
 
-<section id="certificate">
-<p class="tag">MY ACHIEVEMENTS</p>
-<h2>Certificates.</h2>
-<div class="card"><p>Tambahkan sertifikat dan pencapaian kamu di sini.</p></div>
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <p class="tag">My Achievements</p>
+  <h2 class="section-title">Certificates.</h2>
+
+  <div class="certificate-grid">
+    <div class="card">
+      <h3>Sertifikat 01</h3>
+      <div class="certificate-placeholder">
+        Foto atau dokumen sertifikat dapat ditambahkan di sini.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Sertifikat 02</h3>
+      <div class="certificate-placeholder">
+        Tambahkan sertifikat lainnya beserta nama pelatihan
+        atau pencapaiannya.
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- LAST CONCERT -->
 <section id="concert">
-<p class="tag">MY INTERESTS</p>
-<h2>Last Concert.</h2>
-<div class="card"><p>Ceritakan konser terakhir yang kamu kunjungi dan tambahkan foto jika ada.</p></div>
+  <p class="tag">My Interests</p>
+  <h2 class="section-title">Last Concert.</h2>
+  <div class="card">
+    <h3>A Memorable Experience</h3>
+    <p>
+      Bagian ini dapat digunakan untuk membagikan cerita,
+      foto, dan pengalaman dari konser terakhir yang kamu kunjungi.
+    </p>
+  </div>
 </section>
+
 </main>
 
-<footer>© 2026 Suci Ramdhani · Personal Portfolio</footer>
+<footer>
+  © 2026 Suci Ramdhani · Personal Portfolio
+</footer>
+
 </body>
 </html>
